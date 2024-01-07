@@ -4,7 +4,7 @@ import * as z from "zod";
 import { RegisterSchema } from "@/schemas";
 import bcrypt from "bcrypt";
 import { db } from "@/lib/db";
-import { getUserByEmial } from "@/data/user";
+import { getUserByEmail } from "@/data/user";
 
 
 export const register = async (values: z.infer<typeof RegisterSchema>) => {
@@ -17,7 +17,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     const { email, password, name } = validatedFields.data;
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const existingUser = await getUserByEmial(email);
+    const existingUser = await getUserByEmail(email);
 
     if (existingUser) {
         return {error: "Email already in use !"};
