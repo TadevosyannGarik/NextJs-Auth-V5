@@ -22,6 +22,11 @@ export const CardWrapper = ({children, headerLabel, backButtonLabel, backButtonH
             </CardHeader>
             <CardContent>
                 {children}
+                <div className="flex items-center justify-center mt-5">
+                    <div className="border-b border-zinc-400 w-full"></div>
+                    <span className="px-4 bg-white text-zinc-500">or</span>
+                    <div className="border-b border-zinc-400 w-full"></div>
+                </div>
             </CardContent>
             {showSocial && (
                 <CardFooter>
