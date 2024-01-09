@@ -14,19 +14,14 @@ interface CardWrapperProps {
     showSocial?: boolean;    
 }
 
-export const CardWrapper = ({children, headerLabel, backButtonLabel, backButtonHref, showSocial}: CardWrapperProps) => {
+export const VerificationCardWrapper = ({children, headerLabel, backButtonLabel, backButtonHref, showSocial}: CardWrapperProps) => {
     return (
-        <Card className="fixed top-0 right-0 h-full w-[450px] overflow-y-auto shadow-sm">
+        <Card className="w-[400px] shadow-sm rounded-lg">
             <CardHeader>
                 <Header label={headerLabel} />
             </CardHeader>
             <CardContent>
                 {children}
-                <div className="flex items-center  mt-5">
-                    <div className="border-b border-zinc-400 w-full"></div>
-                    <span className="px-4 bg-white text-zinc-500">or</span>
-                    <div className="border-b border-zinc-400 w-full"></div>
-                </div>
             </CardContent>
             {showSocial && (
                 <CardFooter>
@@ -43,4 +38,4 @@ export const CardWrapper = ({children, headerLabel, backButtonLabel, backButtonH
     )
 }
 
-export default CardWrapper
+export default VerificationCardWrapper
