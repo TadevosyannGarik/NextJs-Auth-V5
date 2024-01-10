@@ -53,13 +53,22 @@ export const {
         },
         async session({ token, session }) {
             if (token.sub && session.user) {
-                session.user.id = token.sub
+                session.user.id = token.sub;
             }
-
+      
             if (token.role && session.user) {
                 session.user.role = token.role as UserRole;
             }
-
+      
+            if (session.user) {
+                session.user.isTwoFactorEnabled = token.isTwoFactorEnabled as boolean;
+            }
+      
+            if (session.user) {
+                session.user.name = token.name;
+                session.user.email = token.email;
+            }
+      
             return session;
         },
 
@@ -71,6 +80,7 @@ export const {
             if (!existingUser) return token
 
             token.role = existingUser.role;
+            token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled
 
             return token
         }
